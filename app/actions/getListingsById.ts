@@ -2,19 +2,18 @@ import prisma from "@/app/libs/prismadb";
 
 
 interface IParams {
-    listingsId?: string 
+    listingId?: string 
 }
 
 export async function getListingById(
-  params: IParams
-) {
+    params: IParams ) {
     
   try {
-    const { listingsId } = params;
+    const { listingId } = params;
     
     const listing = await prisma.listing.findUnique({
       where: {
-        id: listingsId,
+        id: listingId,
       },
       include: {
         user: true
